@@ -1,29 +1,54 @@
 {
-  "project_info": {
-    "project_number": "141353480398",
-    "project_id": "cakeshop-afc3f",
-    "storage_bucket": "cakeshop-afc3f.firebasestorage.app"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:141353480398:android:92616c9e6fe50ef081209f",
-        "android_client_info": {
-          "package_name": "com.example.final_project_sanbercode"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAcaetqjVCwETGECGmLMpNQKR2033UR4gA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
+    "project_info": {
+      "project_number": "141353480398",
+      "project_id": "cakeshop-afc3f",
+      "storage_bucket": "cakeshop-afc3f.firebasestorage.app"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:141353480398:android:92616c9e6fe50ef081209f",
+          "android_client_info": {
+            "package_name": "com.example.final_project_sanbercode"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "141353480398-8scp2l50v1f89ngnf43j6aa1p6bq3fp6.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.example.final_project_sanbercode",
+              "certificate_hash": "55a774d419b8f2ffc2603d4a861afa718d8ae11a"
+            }
+          },
+          {
+            "client_id": "141353480398-a2upm8ed6n16p9kths8hceki9vr5vg57.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyAcaetqjVCwETGECGmLMpNQKR2033UR4gA"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "141353480398-a2upm8ed6n16p9kths8hceki9vr5vg57.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "141353480398-16rmn4b3hf2q9ffdriajslp7c069ksi1.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.finalProjectSanbercode"
+                }
+              }
+            ]
+          }
         }
       }
-    }
-  ],
-  "configuration_version": "1"
-}
+    ],
+    "configuration_version": "1"
+  }

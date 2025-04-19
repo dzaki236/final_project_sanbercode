@@ -3,6 +3,7 @@ import 'package:final_project_sanbercode/components/widgets/outlet_image.dart';
 import 'package:final_project_sanbercode/components/widgets/product_card.dart';
 import 'package:final_project_sanbercode/components/widgets/stand_search_bar.dart';
 import 'package:final_project_sanbercode/controllers/auth_controller.dart';
+import 'package:final_project_sanbercode/controllers/outlet_controller.dart';
 import 'package:final_project_sanbercode/routes/product_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
@@ -12,8 +13,10 @@ import 'package:final_project_sanbercode/controllers/product_controller.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final ProductController productC = Get.put(ProductController());
-  final authController = Get.find<AuthController>();
+  final ProductController productController = Get.find<ProductController>();
+  final OutletController outletController = Get.find<OutletController>();
+  final AuthController authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,24 +123,29 @@ class HomePage extends StatelessWidget {
                           style: AppFont.nunitoSansBold
                               .copyWith(color: AppColor.dark, fontSize: 16),
                         ),
-                        Text(
-                          'All Product',
-                          style: AppFont.nunitoSansBold
-                              .copyWith(color: AppColor.primary, fontSize: 12),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(ProductRoutes.products);
+                          },
+                          child: Text(
+                            'All Product',
+                            style: AppFont.nunitoSansBold.copyWith(
+                                color: AppColor.primary, fontSize: 12),
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 12),
                     GetBuilder(
-                      init: productC,
+                      init: productController,
                       builder: (_) {
-                        if (productC.isLoading) {
+                        if (productController.isLoading) {
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
                         }
                         return SizedBox(
-                          height: 250,
+                          height: 260,
                           width: double.infinity,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
@@ -150,17 +158,14 @@ class HomePage extends StatelessWidget {
                                   child: SingleChildScrollView(
                                     child: ProductCard(
                                       url:
-                                          "${productC.products[index].productImage}",
+                                          "${productController.products[index].productImage}",
                                       productName:
-                                          "${productC.products[index].productName}-${productC.products[index].id}",
-                                      productPrice:
-                                          productC.products[index].productPrice,
+                                          "${productController.products[index].productName}-${productController.products[index].id}",
+                                      productPrice: productController
+                                          .products[index].productPrice,
                                       onPressed: () {
-                                        // print(productC.products[index].id);
-                                        // print(ProductRoutes.detail);
-                                        print(productC.products[index].id);
                                         Get.toNamed(
-                                          "${ProductRoutes.products}/${productC.products[index].id}",
+                                          "${ProductRoutes.products}/${productController.products[index].id}",
                                         );
                                       },
                                     ),

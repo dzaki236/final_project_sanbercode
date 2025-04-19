@@ -4,6 +4,7 @@ import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
 import 'package:final_project_sanbercode/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
   @override
@@ -31,6 +32,10 @@ class AuthController extends GetxController {
   Future<void> signOut(context) async {
     // Implement your sign-out logic here
     try {
+      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser != null) {
+        await GoogleSignIn().signOut();
+      }
       await authService.signOut();
       await successToast(context,
           text: 'Berhasil keluar, Silahkan tunggu beberapa saat');
@@ -57,6 +62,34 @@ class AuthController extends GetxController {
       Get.offAllNamed(DashboardRoutes.main);
     } on FirebaseAuthException catch (_) {
       await errorToast(context, text: 'Gagal mendaftar');
+    }
+  }
+
+  Future<void> signInWithGoogle(context) async {
+    try {
+      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        // User canceled the sign-in
+        return;
+      }
+      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      await authService.signInWithCredential(credential);
+      await successToast(context, text: 'Berhasil masuk dengan Google');
+      Get.offAllNamed(DashboardRoutes.main);
+    } on FirebaseAuthException catch (_) {
+      await errorToast(context, text: 'Gagal masuk dengan Google');
+    }
+  }
+  Future<void> resetPassword(context, {required String email}) async {
+    try {
+      await authService.sendPasswordResetEmail(email: email);
+      await successToast(context, text: 'Email untuk reset password sudah dikirim');
+    } on FirebaseAuthException catch (_) {
+      await errorToast(context, text: 'Gagal mengirim email untuk reset password');
     }
   }
 }

@@ -3,22 +3,23 @@ import 'package:final_project_sanbercode/components/custom_widgets/input.dart';
 import 'package:final_project_sanbercode/components/custom_widgets/toast.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/config/app/app_font.dart';
+import 'package:final_project_sanbercode/controllers/auth_controller.dart';
 import 'package:final_project_sanbercode/pages/auth/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
+  // final AuthController authController = AuthController.to;
+  final AuthController authController = Get.find<AuthController>();
   ForgotPasswordPage({super.key});
   Future<dynamic> _submit(context) async {
     if (_formKey.currentState!.validate()) {
       // Kalau semua valid
       debugPrint("Email: ${emailController.text}");
-      successToast(context, text: 'Berhasil mengirim email!');
-      return Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
-          (route) => false);
+      debugPrint("Password: ${emailController.text}");
+      authController.resetPassword(context, email: emailController.text);
     } else {
       debugPrint("Form tidak valid");
     }

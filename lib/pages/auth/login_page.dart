@@ -29,9 +29,6 @@ class LoginPage extends StatelessWidget {
         email: emailController.text,
         password: passwordController.text,
       );
-      // } else {
-      // debugPrint("Form tidak valid");
-      // }
     }
   }
 
@@ -163,7 +160,9 @@ class LoginPage extends StatelessWidget {
                         borderColor: AppColor.red,
                         borderWidth: 2,
                         color: AppColor.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          authController.signInWithGoogle(context);
+                        },
                       ),
                       const SizedBox(
                         height: 60,

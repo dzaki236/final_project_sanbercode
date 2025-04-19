@@ -1,5 +1,7 @@
 import 'package:final_project_sanbercode/bindings/auth_binding.dart';
+import 'package:final_project_sanbercode/bindings/outlet_binding.dart';
 import 'package:final_project_sanbercode/bindings/product_binding.dart';
+import 'package:final_project_sanbercode/pages/auth/forgot_password_page.dart';
 import 'package:final_project_sanbercode/pages/auth/login_page.dart';
 import 'package:final_project_sanbercode/pages/auth/register_page.dart';
 import 'package:final_project_sanbercode/pages/dashboard.dart';
@@ -29,13 +31,32 @@ class AppRoutes {
       ],
     ),
     GetPage(
-        name: DashboardRoutes.main,
-        page: () => Dashboard(),
-        bindings: [ProductBinding(), AuthBinding()]),
-    GetPage(name: ProductRoutes.products, page: () => const ProductPage()),
+      name: AuthRoutes.forgotPassword,
+      page: () => ForgotPasswordPage(),
+      bindings: [
+        AuthBinding(),
+      ],
+    ),
+    GetPage(
+      name: DashboardRoutes.main,
+      page: () => Dashboard(),
+      bindings: [
+        ProductBinding(),
+        AuthBinding(),
+        OutletBinding(),
+      ],
+    ),
+    GetPage(name: ProductRoutes.products, page: () => ProductPage()),
     GetPage(
       name: ProductRoutes.detail,
       page: () => DetailProductPage(),
+      bindings: [
+        ProductBinding(),
+      ],
+    ),
+    GetPage(
+      name: ProductRoutes.products,
+      page: () => ProductPage(),
       bindings: [
         ProductBinding(),
       ],

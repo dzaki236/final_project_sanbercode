@@ -10,16 +10,39 @@ class ProductController extends GetxController {
     super.onInit();
   }
 
-  void test() {}
   List<ProductModel> products = [];
   ProductModel? product;
   bool isLoading = true;
   final ProductService productService = ProductService();
+  var categories = ['Beverage', 'Bread', 'Cake', 'Cookies'];
+  var selectedCategory = 'Cake';
   Future<void> getProductsList() async {
     try {
       isLoading = true;
       update();
       products = await ProductService().getProducts(5);
+      update();
+    } catch (e) {
+      // Handle error
+      debugPrint('Error fetching products: $e');
+    } finally {
+      isLoading = false;
+      update();
+    }
+  }
+
+  void changeCategory(String category) {
+    selectedCategory = category;
+    getProductByCategory();
+  }
+
+  Future<void> getProductByCategory() async {
+    try {
+      isLoading = true;
+      update();
+      products =
+          await ProductService().getProductsByCategories(selectedCategory);
+      isLoading = false;
       update();
     } catch (e) {
       // Handle error

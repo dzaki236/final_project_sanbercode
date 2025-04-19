@@ -26,14 +26,15 @@ class ProductService extends GetxService {
     }
   }
 
-  Future<ProductModel> getProductDetail(String? id) async {
+  Future<List<ProductModel>> getProductsByCategories(String category) async {
     try {
-      final response = await dio.get("${ApiUrl.productUrl}/$id");
+      final response =
+          await dio.get("${ApiUrl.productUrl}/?kategori=$category");
       if (response.statusCode == 200) {
-        ProductModel product = ProductModel.fromJson(response.data);
-        print(product);
-        // Filter products based on the limit
-        return product;
+        List<ProductModel> products = List.from(
+          response.data.map((item) => ProductModel.fromJson(item)),
+        );
+        return products;
       } else {
         throw Exception('Failed to load products');
       }

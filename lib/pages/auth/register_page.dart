@@ -1,5 +1,6 @@
 import 'package:final_project_sanbercode/components/custom_widgets/button.dart';
 import 'package:final_project_sanbercode/components/custom_widgets/input.dart';
+import 'package:final_project_sanbercode/components/custom_widgets/toast.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/config/app/app_font.dart';
 import 'package:final_project_sanbercode/controllers/auth_controller.dart';
@@ -20,6 +21,13 @@ class RegisterPage extends StatelessWidget {
       // Kalau semua valid
       debugPrint("Email: ${emailController.text}");
       debugPrint("Password: ${passwordController.text}");
+      authController.signUp(
+        context,
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      await successToast(context,
+          text: 'Berhasil mendaftar, Silahkan tunggu beberapa saat');
     } else {
       debugPrint("Form tidak valid");
     }
@@ -141,7 +149,7 @@ class RegisterPage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 8, right: 8),
                             child: Text(
-                              'Atau masuk menggunakan',
+                              'Atau daftar menggunakan',
                               style: AppFont.nunitoSansRegular
                                   .copyWith(color: AppColor.gray),
                             ),
@@ -168,7 +176,9 @@ class RegisterPage extends StatelessWidget {
                         borderColor: AppColor.red,
                         borderWidth: 2,
                         color: AppColor.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          authController.signInWithGoogle(context);
+                        },
                       ),
                       const SizedBox(
                         height: 60,

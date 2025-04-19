@@ -1,4 +1,5 @@
 import 'package:final_project_sanbercode/components/custom_widgets/toast.dart';
+import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
 import 'package:final_project_sanbercode/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +22,7 @@ class AuthController extends GetxController {
         password: password,
       );
       await successToast(context, text: 'Berhasil masuk');
-      Get.offNamed(DashboardRoutes.main);
+      Get.offAllNamed(DashboardRoutes.main);
     } on FirebaseAuthException catch (_) {
       await errorToast(context, text: 'Email atau password salah');
     }
@@ -33,7 +34,7 @@ class AuthController extends GetxController {
       await authService.signOut();
       await successToast(context,
           text: 'Berhasil keluar, Silahkan tunggu beberapa saat');
-      Get.offNamed(DashboardRoutes.main);
+      Get.offAllNamed(AuthRoutes.login);
     } on FirebaseAuthException catch (_) {
       await errorToast(context, text: 'Gagal keluar');
     }
@@ -43,6 +44,7 @@ class AuthController extends GetxController {
       {required String email, required String password}) async {
     // Implement your sign-up logic here
     try {
+      // login & register
       await authService.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -51,8 +53,8 @@ class AuthController extends GetxController {
         email: email,
         password: password,
       );
-      await successToast(context, text: 'Berhasil mendaftar');
-      Get.offNamed(DashboardRoutes.main);
+
+      Get.offAllNamed(DashboardRoutes.main);
     } on FirebaseAuthException catch (_) {
       await errorToast(context, text: 'Gagal mendaftar');
     }

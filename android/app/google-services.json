@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "141353480398",
+    "project_id": "cakeshop-afc3f",
+    "storage_bucket": "cakeshop-afc3f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141353480398:android:92616c9e6fe50ef081209f",
+        "android_client_info": {
+          "package_name": "com.example.final_project_sanbercode"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcaetqjVCwETGECGmLMpNQKR2033UR4gA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

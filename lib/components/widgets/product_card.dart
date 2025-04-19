@@ -44,22 +44,26 @@ class ProductCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      productName,
-                      style: AppFont.nunitoSansSemiBold
-                          .copyWith(color: AppColor.dark, fontSize: 14),
-                    ),
-                    Text(
-                      formatIDRCurrency(number: productPrice),
-                      style: AppFont.nunitoSansBold
-                          .copyWith(color: AppColor.primary, fontSize: 12),
-                    )
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        softWrap: true,
+                        maxLines: 4,
+                        productName,
+                        style: AppFont.nunitoSansSemiBold
+                            .copyWith(color: AppColor.dark, fontSize: 14),
+                      ),
+                      Text(
+                        formatIDRCurrency(number: productPrice),
+                        style: AppFont.nunitoSansBold
+                            .copyWith(color: AppColor.primary, fontSize: 12),
+                      )
+                    ],
+                  ),
                 ),
-                const Expanded(child: SizedBox()),
+                // const Expanded(child: SizedBox()),
                 GestureDetector(
                   onTap: onPressed ?? () {},
                   child: Container(

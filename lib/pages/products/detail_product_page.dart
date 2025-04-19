@@ -3,16 +3,19 @@ import 'package:final_project_sanbercode/components/custom_widgets/image.dart';
 import 'package:final_project_sanbercode/components/custom_widgets/toast.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/config/app/app_font.dart';
+import 'package:final_project_sanbercode/controllers/product_controller.dart';
 import 'package:final_project_sanbercode/helpers/money_format.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter/material.dart';
-// import 'package:getwidget/getwidget.dart';
+import 'package:get/get.dart';
 
 class DetailProductPage extends StatelessWidget {
-  const DetailProductPage({super.key});
-
+  DetailProductPage({super.key});
+  final ProductController productC = Get.find<ProductController>();
   @override
   Widget build(BuildContext context) {
+    final productId = Get.parameters['id'];
+    final product = productC.getProductById(productId!);
     return Scaffold(
       backgroundColor: AppColor.white,
       appBar: AppBar(
@@ -38,14 +41,13 @@ class DetailProductPage extends StatelessWidget {
                   height: 343,
                   boxFit: BoxFit.cover,
                   width: double.infinity,
-                  image: NetworkImage(
-                      'https://res.cloudinary.com/dgkvma38q/image/upload/v1744830219/cake-1_njrgpo.jpg'),
+                  image: NetworkImage("${product?.productImage}"),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 Text(
-                  'Chocolate Cake',
+                  "${product?.productName}",
                   style: AppFont.nunitoSansBold
                       .copyWith(color: AppColor.dark, fontSize: 20),
                 ),
@@ -60,12 +62,12 @@ class DetailProductPage extends StatelessWidget {
                       size: 16,
                     ),
                     Text(
-                      '4.9',
+                      "${product?.rating}",
                       style: AppFont.nunitoSansSemiBold
                           .copyWith(color: AppColor.dark, fontSize: 12),
                     ),
                     Text(
-                      '(103)',
+                      '(${product?.ratingTotals})',
                       style: AppFont.nunitoSansSemiBold
                           .copyWith(color: AppColor.grayWafer, fontSize: 12),
                     ),
@@ -74,8 +76,7 @@ class DetailProductPage extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat sem. Sed at nibh posuere ipsum volutpat venenatis. Donec ac felis nec tellus lobortis semper eu ac velit. Sed sit amet neque nisl..',
+                Text("${product?.productDescription}",
                     style: AppFont.nunitoSansRegular
                         .copyWith(color: AppColor.dark, fontSize: 12),
                     textAlign: TextAlign.justify),
@@ -161,7 +162,7 @@ class DetailProductPage extends StatelessWidget {
             ),
             PillsButton(
                 onPressed: () {
-                   errorToast(
+                  errorToast(
                     context,
                     text:
                         'Maaf, fitur belum tersedia!\nkarena ini masih tahap prototype, fitur ini belum tersedia sepenuhnya!',

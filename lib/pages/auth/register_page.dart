@@ -2,8 +2,10 @@ import 'package:final_project_sanbercode/components/custom_widgets/button.dart';
 import 'package:final_project_sanbercode/components/custom_widgets/input.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/config/app/app_font.dart';
+import 'package:final_project_sanbercode/controllers/auth_controller.dart';
 import 'package:final_project_sanbercode/pages/auth/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -11,8 +13,9 @@ class RegisterPage extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordConfirmationController = TextEditingController();
+  final AuthController authController = Get.find<AuthController>();
   RegisterPage({super.key});
-  dynamic _submit(context) {
+  dynamic _submit(context) async {
     if (_formKey.currentState!.validate()) {
       // Kalau semua valid
       debugPrint("Email: ${emailController.text}");

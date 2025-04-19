@@ -2,15 +2,18 @@ import 'package:final_project_sanbercode/components/widgets/banner_image.dart';
 import 'package:final_project_sanbercode/components/widgets/outlet_image.dart';
 import 'package:final_project_sanbercode/components/widgets/product_card.dart';
 import 'package:final_project_sanbercode/components/widgets/stand_search_bar.dart';
-import 'package:final_project_sanbercode/pages/auth/login_page.dart';
-import 'package:final_project_sanbercode/pages/products/detail_product_page.dart';
+import 'package:final_project_sanbercode/controllers/auth_controller.dart';
+import 'package:final_project_sanbercode/routes/product_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/config/app/app_font.dart';
+import 'package:get/get.dart';
+import 'package:final_project_sanbercode/controllers/product_controller.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+  HomePage({super.key});
+  final ProductController productC = Get.put(ProductController());
+  final authController = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,12 +52,7 @@ class HomePage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LoginPage(),
-                              ),
-                            );
+                            authController.signOut(context);
                           },
                           child: const Icon(
                             Icons.logout,
@@ -130,37 +128,48 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 12),
-                    SizedBox(
-                      height: 250,
-                      width: double.infinity,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 16, top: 16, bottom: 20),
-                              child: SingleChildScrollView(
-                                child: ProductCard(
-                                  url:
-                                      'https://res.cloudinary.com/dgkvma38q/image/upload/v1744830219/cake-1_njrgpo.jpg',
-                                  productName: 'Cake',
-                                  productPrice: 100000,
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const DetailProductPage(),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            );
-                          },
-                          itemCount: 4),
+                    GetBuilder(
+                      init: productC,
+                      builder: (_) {
+                        if (productC.isLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return SizedBox(
+                          height: 250,
+                          width: double.infinity,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 16, top: 16, bottom: 20),
+                                  child: SingleChildScrollView(
+                                    child: ProductCard(
+                                      url:
+                                          "${productC.products[index].productImage}",
+                                      productName:
+                                          "${productC.products[index].productName}-${productC.products[index].id}",
+                                      productPrice:
+                                          productC.products[index].productPrice,
+                                      onPressed: () {
+                                        // print(productC.products[index].id);
+                                        // print(ProductRoutes.detail);
+                                        print(productC.products[index].id);
+                                        Get.toNamed(
+                                          "${ProductRoutes.products}/${productC.products[index].id}",
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                );
+                              },
+                              itemCount: 1),
+                        );
+                      },
                     ),
                   ],
                 ),

@@ -14,7 +14,7 @@ class ProductModel {
   });
 
   final String? productName;
-  final int? productPrice;
+  final int productPrice;
   final String? productDescription;
   final bool? isFavorite;
   final String? productImage;
@@ -23,7 +23,7 @@ class ProductModel {
   final String? rating;
   final int? ratingTotals;
   final DateTime? createdAt;
-  final String? id;
+  final String id;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(

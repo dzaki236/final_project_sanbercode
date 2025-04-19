@@ -1,11 +1,16 @@
 import 'package:final_project_sanbercode/components/custom_widgets/button.dart';
 import 'package:final_project_sanbercode/components/custom_widgets/input.dart';
+import 'package:final_project_sanbercode/components/custom_widgets/toast.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/config/app/app_font.dart';
+import 'package:final_project_sanbercode/controllers/auth_controller.dart';
 import 'package:final_project_sanbercode/pages/auth/forgot_password_page.dart';
 import 'package:final_project_sanbercode/pages/auth/register_page.dart';
 import 'package:final_project_sanbercode/pages/dashboard.dart';
+import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
 class LoginPage extends StatelessWidget {
@@ -13,15 +18,20 @@ class LoginPage extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   LoginPage({super.key});
-  dynamic _submit(context) {
+  final AuthController authController = Get.find<AuthController>();
+  dynamic _submit(context) async {
     if (_formKey.currentState!.validate()) {
       // Kalau semua valid
       debugPrint("Email: ${emailController.text}");
       debugPrint("Password: ${passwordController.text}");
-      return Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Dashboard()));
-    } else {
-      debugPrint("Form tidak valid");
+      authController.signIn(
+        context,
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      // } else {
+      // debugPrint("Form tidak valid");
+      // }
     }
   }
 

@@ -1,8 +1,11 @@
 import 'package:final_project_sanbercode/components/custom_widgets/button.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/config/app/app_font.dart';
-import 'package:final_project_sanbercode/pages/auth/login_page.dart';
+import 'package:final_project_sanbercode/routes/auth_routes.dart';
+// import 'package:final_project_sanbercode/pages/auth/login_page.dart';
+// import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});
@@ -64,12 +67,7 @@ class GetStartedPage extends StatelessWidget {
                   ),
                   PillsButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ),
-                      );
+                      Get.toNamed(AuthRoutes.login);
                     },
                     text: 'Start Shopping',
                     fontSize: 16,

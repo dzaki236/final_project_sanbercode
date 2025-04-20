@@ -1,7 +1,7 @@
 import 'package:final_project_sanbercode/config/app/api_url.dart';
 import 'package:final_project_sanbercode/helpers/dio.dart';
 import 'package:final_project_sanbercode/models/outlet_model.dart';
-import 'package:final_project_sanbercode/models/product_model.dart';
+// import 'package:final_project_sanbercode/models/product_model.dart';
 import 'package:get/get.dart';
 
 class OutletService extends GetxService {

@@ -1,4 +1,5 @@
 // import 'package:final_project_sanbercode/pages/get_started/get_started_page.dart';
+import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/routes/app_routes.dart';
 import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColor.primary,
+              ),
             );
           }
 

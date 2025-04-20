@@ -1,4 +1,4 @@
-import 'package:final_project_sanbercode/components/widgets/outlet_image.dart';
+// import 'package:final_project_sanbercode/components/widgets/outlet_image.dart';
 import 'package:final_project_sanbercode/components/widgets/product_card.dart';
 import 'package:final_project_sanbercode/components/widgets/stand_search_bar.dart';
 import 'package:final_project_sanbercode/config/app/app_color.dart';

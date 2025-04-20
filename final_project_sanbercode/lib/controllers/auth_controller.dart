@@ -9,9 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthController extends GetxController {
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
-    // signIn(email: '', password: '');
   }
 
   final authService = AuthService.auth;

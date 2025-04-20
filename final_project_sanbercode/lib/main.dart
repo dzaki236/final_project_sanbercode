@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
           }
 
           return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Cake Shop',
             theme: ThemeData(useMaterial3: true),
             getPages: AppRoutes.routes,

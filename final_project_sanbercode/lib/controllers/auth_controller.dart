@@ -30,10 +30,10 @@ class AuthController extends GetxController {
   Future<void> signOut(context) async {
     // Implement your sign-out logic here
     try {
-      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser != null) {
-        await GoogleSignIn().signOut();
-      }
+      // GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      // if (googleUser != null) {
+      //   await GoogleSignIn().signOut();
+      // }
       await authService.signOut();
       await successToast(context,
           text: 'Berhasil keluar, Silahkan tunggu beberapa saat');
@@ -82,12 +82,15 @@ class AuthController extends GetxController {
       await errorToast(context, text: 'Gagal masuk dengan Google');
     }
   }
+
   Future<void> resetPassword(context, {required String email}) async {
     try {
       await authService.sendPasswordResetEmail(email: email);
-      await successToast(context, text: 'Email untuk reset password sudah dikirim');
+      await successToast(context,
+          text: 'Email untuk reset password sudah dikirim');
     } on FirebaseAuthException catch (_) {
-      await errorToast(context, text: 'Gagal mengirim email untuk reset password');
+      await errorToast(context,
+          text: 'Gagal mengirim email untuk reset password');
     }
   }
 }

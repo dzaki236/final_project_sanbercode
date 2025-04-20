@@ -3,7 +3,6 @@ import 'package:final_project_sanbercode/config/app/app_color.dart';
 import 'package:final_project_sanbercode/routes/app_routes.dart';
 import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
-import 'package:final_project_sanbercode/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

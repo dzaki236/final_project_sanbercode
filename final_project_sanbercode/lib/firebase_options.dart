@@ -64,6 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '141353480398',
     projectId: 'cakeshop-afc3f',
     storageBucket: 'cakeshop-afc3f.firebasestorage.app',
+    // androidClientId: '141353480398-8scp2l50v1f89ngnf43j6aa1p6bq3fp6.apps.googleusercontent.com',
+    // iosClientId: '141353480398-16rmn4b3hf2q9ffdriajslp7c069ksi1.apps.googleusercontent.com',
     iosBundleId: 'com.example.finalProjectSanbercode',
   );
 
@@ -73,6 +75,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '141353480398',
     projectId: 'cakeshop-afc3f',
     storageBucket: 'cakeshop-afc3f.firebasestorage.app',
+    androidClientId: '141353480398-8scp2l50v1f89ngnf43j6aa1p6bq3fp6.apps.googleusercontent.com',
+    iosClientId: '141353480398-16rmn4b3hf2q9ffdriajslp7c069ksi1.apps.googleusercontent.com',
     iosBundleId: 'com.example.finalProjectSanbercode',
   );
 
@@ -85,4 +89,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'cakeshop-afc3f.firebasestorage.app',
     measurementId: 'G-10KW9QY920',
   );
+
 }

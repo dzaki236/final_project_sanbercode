@@ -206,14 +206,21 @@ class HomePage extends StatelessWidget {
                               mainAxisSpacing: 12.0, // spacing between rows
                               crossAxisSpacing: 12.0, // spacing between columns
                             ),
+                            itemCount: outletController
+                                .outlets.length, // diambil length nya..
                             itemBuilder: (context, index) {
+                              final outlet = outletController.outlets[index];
                               return OutletImage(
-                                url:
+                                url: outlet.image ??
                                     'https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/jakarta_dszwrz.jpg',
-                                text: 'Outlet ${index + 1}',
+                                text: outlet.name
+                                        ?.replaceFirst('outlet-', '')
+                                        .split('-')
+                                        .map((word) => word.capitalize)
+                                        .join(' ') ??
+                                    'Outlet',
                               );
                             },
-                            itemCount: 4, // diambil length nya..
                           );
                         }),
                   ],

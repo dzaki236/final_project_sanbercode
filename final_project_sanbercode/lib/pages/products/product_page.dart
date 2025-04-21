@@ -14,20 +14,21 @@ class ProductPage extends StatelessWidget {
   final ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-      init: productController,
-      builder: (productController) {
-        if (productController.categories.isEmpty) {
+    return GetBuilder<ProductController>(
+      builder: (controller) {
+        if (controller.categories.isEmpty) {
           return Scaffold(
             body: Center(
                 child: CircularProgressIndicator(color: AppColor.primary)),
           );
         }
         return DefaultTabController(
-          length: productController.categories.length,
+          length: controller.categories.length,
           child: Scaffold(
             backgroundColor: AppColor.white,
             appBar: AppBar(
+              scrolledUnderElevation: 0,
+              elevation: 0,
               backgroundColor: AppColor.white,
               title: Container(
                 decoration: BoxDecoration(
@@ -62,10 +63,10 @@ class ProductPage extends StatelessWidget {
                       indicatorPadding: EdgeInsets.zero,
                       labelPadding: const EdgeInsets.only(left: 25, right: 25),
                       onTap: (index) {
-                        productController.changeCategory(
-                            productController.categories[index]);
+                        controller.changeCategory(
+                            controller.categories[index]);
                       },
-                      tabs: productController.categories
+                      tabs: controller.categories
                           .map((cat) => Tab(text: cat))
                           .toList(),
                     ),
@@ -73,7 +74,7 @@ class ProductPage extends StatelessWidget {
                 ),
               ),
             ),
-            body: productController.isLoading
+            body: controller.isLoading
                 ? Center(
                     child: CircularProgressIndicator(
                     color: AppColor.primary,
@@ -83,7 +84,7 @@ class ProductPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16),
                         child: ProductTabView(
-                            products: productController.products),
+                            products: controller.products),
                       ),
                     ),
                   ),
@@ -111,8 +112,8 @@ class ProductTabView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 12.0,
-        crossAxisSpacing: 12.0,
+        mainAxisSpacing: 8.0,
+        crossAxisSpacing: 8.0,
         childAspectRatio: 0.7,
       ),
       itemBuilder: (context, index) {

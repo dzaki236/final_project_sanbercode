@@ -141,7 +141,8 @@ class HomePage extends StatelessWidget {
                       builder: (_) {
                         if (productController.isLoading) {
                           return const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                                color: AppColor.primary),
                           );
                         }
                         return SizedBox(
@@ -172,10 +173,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              itemCount: productController.products.length >= 5
-                                  ? 5
-                                  : productController
-                                      .products.length, // diambil length nya..
+                              itemCount: productController
+                                  .products.length, // diambil length nya..
                             ));
                       },
                     ),
@@ -197,7 +196,8 @@ class HomePage extends StatelessWidget {
                         builder: (_) {
                           if (outletController.isLoading) {
                             return const Center(
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(
+                                  color: AppColor.primary),
                             );
                           }
                           return GridView.builder(
@@ -215,13 +215,8 @@ class HomePage extends StatelessWidget {
                               final outlet = outletController.outlets[index];
                               return OutletImage(
                                 url: outlet.image ??
-                                    'https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/jakarta_dszwrz.jpg',
-                                text: outlet.name
-                                        ?.replaceFirst('outlet-', '')
-                                        .split('-')
-                                        .map((word) => word.capitalize)
-                                        .join(' ') ??
-                                    'Outlet',
+                                    'https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=',
+                                text: "${outlet.address}",
                               );
                             },
                           );

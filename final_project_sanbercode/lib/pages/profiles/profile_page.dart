@@ -11,7 +11,7 @@ import 'package:getwidget/getwidget.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     final AuthController authController = Get.find<AuthController>();
@@ -78,19 +78,14 @@ class ProfilePage extends StatelessWidget {
                     const SizedBox(
                       height: 24,
                     ),
-                    GFButton(
-                      onPressed: () {
+                    GestureDetector(
+                      onTap: () {
                         authController.signOut(context);
                       },
-                      text: "Logout",
-                      size: GFSize.LARGE,
-                      textColor: AppColor.dark,
-                      icon: const Icon(
+                      child: const Icon(
                         Icons.logout,
                         color: AppColor.dark,
                       ),
-                      color: AppColor.primary,
-                      type: GFButtonType.transparent,
                     ),
                   ],
                 ),

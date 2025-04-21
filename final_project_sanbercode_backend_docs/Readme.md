@@ -1,7 +1,7 @@
 # Introduction
 Kami dari tim "threegonometries" yang beranggotakan
 - Dzaki Ahnaf Zulfikar
--
+- Gertrud Irish Jovincia
 - Ayrisa Trianida
 ## Use Cases
 

@@ -5,6 +5,8 @@ import 'package:final_project_sanbercode/config/app/app_font.dart';
 import 'package:final_project_sanbercode/pages/auth/login_page.dart';
 import 'package:final_project_sanbercode/pages/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:final_project_sanbercode/controllers/auth_controller.dart';
 import 'package:getwidget/getwidget.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -12,6 +14,7 @@ class ProfilePage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    final AuthController authController = Get.find<AuthController>();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -77,12 +80,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     GFButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginPage(),
-                          ),
-                        );
+                        authController.signOut(context);
                       },
                       text: "Logout",
                       size: GFSize.LARGE,

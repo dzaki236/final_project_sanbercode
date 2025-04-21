@@ -152,7 +152,7 @@ class DetailProductPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  formatIDRCurrency(number: 200000),
+                  formatIDRCurrency(number: product?.productPrice ?? 0),
                   style: AppFont.nunitoSansBold.copyWith(
                     fontSize: 18,
                     color: AppColor.primary,

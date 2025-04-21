@@ -4,12 +4,12 @@ import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
 import 'package:final_project_sanbercode/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  // final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   void onInit() {
@@ -17,6 +17,11 @@ class AuthController extends GetxController {
   }
 
   final authService = AuthService.auth;
+  // Future<User>? getCurrentUser() async {
+  //   // Get the current user from Firebase Auth
+  //   User? user = authService.currentUser;
+  //   return user;
+  // }
   Future<void> signIn(context,
       {required String email, required String password}) async {
     try {

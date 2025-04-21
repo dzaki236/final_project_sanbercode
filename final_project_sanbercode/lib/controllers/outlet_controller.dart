@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class OutletController extends GetxController {
   @override
   void onInit() {
+    getOutletList();
     super.onInit();
   }
 

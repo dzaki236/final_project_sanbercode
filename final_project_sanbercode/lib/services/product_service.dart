@@ -29,7 +29,7 @@ class ProductService extends GetxService {
   Future<List<ProductModel>> getProductsByCategories(String category) async {
     try {
       final response =
-          await dio.get("${ApiUrl.productUrl}/?kategori=$category");
+          await dio.get("${ApiUrl.productUrl}/?category=$category");
       if (response.statusCode == 200) {
         List<ProductModel> products = List.from(
           response.data.map((item) => ProductModel.fromJson(item)),

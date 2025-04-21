@@ -15,6 +15,8 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthController authController = Get.find<AuthController>();
+    final user = authController.auth.currentUser;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -47,7 +49,7 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                UserInfoAvatars(email: 'test@gmail.com'),
+                UserInfoAvatars(email: user?.email ?? 'tidak ada email'),
                 const SizedBox(
                   height: 40,
                 ),
@@ -64,17 +66,21 @@ class ProfilePage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const InfoDivider(title: 'Name', value: 'dzakiahnafz'),
+                    InfoDivider(
+                        title: 'Name',
+                        value: user?.displayName ?? 'tidak ada nama'),
                     const SizedBox(
                       height: 24,
                     ),
-                    const InfoDivider(title: 'Email', value: 'test@gmail.com'),
+                    InfoDivider(
+                        title: 'Email',
+                        value: user?.email ?? 'tidak ada email'),
                     const SizedBox(
                       height: 24,
                     ),
-                    const InfoDivider(
+                    InfoDivider(
                         title: 'Preferenced Id',
-                        value: 'ptlM61TpBPSrvgc9Q7bvl2Ttq6x1.'),
+                        value: user?.uid ?? 'tidak ada UID'),
                     const SizedBox(
                       height: 24,
                     ),

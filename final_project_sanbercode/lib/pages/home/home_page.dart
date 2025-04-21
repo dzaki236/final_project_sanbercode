@@ -145,9 +145,9 @@ class HomePage extends StatelessWidget {
                           );
                         }
                         return SizedBox(
-                          height: 260,
-                          width: double.infinity,
-                          child: ListView.builder(
+                            height: 260,
+                            width: double.infinity,
+                            child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
                               physics: const AlwaysScrollableScrollPhysics(),
@@ -172,8 +172,11 @@ class HomePage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              itemCount: 1), // diambil length nya..
-                        );
+                              itemCount: productController.products.length >= 5
+                                  ? 5
+                                  : productController
+                                      .products.length, // diambil length nya..
+                            ));
                       },
                     ),
                   ],

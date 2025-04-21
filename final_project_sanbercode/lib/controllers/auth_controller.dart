@@ -1,5 +1,5 @@
 import 'package:final_project_sanbercode/components/custom_widgets/toast.dart';
-import 'package:final_project_sanbercode/routes/auth_routes.dart';
+// import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
 import 'package:final_project_sanbercode/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,8 +38,7 @@ class AuthController extends GetxController {
       // }
       await authService.signOut();
       await successToast(context, text: 'Berhasil keluar');
-
-      SystemNavigator.pop();
+      // SystemNavigator.pop();
     } on FirebaseAuthException catch (_) {
       await errorToast(context, text: 'Gagal keluar');
     }

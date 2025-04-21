@@ -172,7 +172,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              itemCount: 1),
+                              itemCount: 1), // diambil length nya..
                         );
                       },
                     ),
@@ -189,24 +189,33 @@ class HomePage extends StatelessWidget {
                           .copyWith(color: AppColor.dark, fontSize: 16),
                     ),
                     const SizedBox(height: 12),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, // number of items in each row
-                        mainAxisSpacing: 12.0, // spacing between rows
-                        crossAxisSpacing: 12.0, // spacing between columns
-                      ),
-                      itemBuilder: (context, index) {
-                        return OutletImage(
-                          url:
-                              'https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/jakarta_dszwrz.jpg',
-                          text: 'Outlet ${index + 1}',
-                        );
-                      },
-                      itemCount: 4,
-                    )
+                    GetBuilder(
+                        init: outletController,
+                        builder: (_) {
+                          if (outletController.isLoading) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          return GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, // number of items in each row
+                              mainAxisSpacing: 12.0, // spacing between rows
+                              crossAxisSpacing: 12.0, // spacing between columns
+                            ),
+                            itemBuilder: (context, index) {
+                              return OutletImage(
+                                url:
+                                    'https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/jakarta_dszwrz.jpg',
+                                text: 'Outlet ${index + 1}',
+                              );
+                            },
+                            itemCount: 4, // diambil length nya..
+                          );
+                        }),
                   ],
                 ),
 

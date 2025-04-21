@@ -98,9 +98,20 @@ class ProfilePage extends StatelessWidget {
                             onTap: () {
                               authController.signOut(context);
                             },
-                            child: const Icon(
-                              Icons.logout,
-                              color: AppColor.dark,
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.logout,
+                                  color: AppColor.dark,
+                                ),
+                                Text(
+                                  'Logout',
+                                  style: AppFont.nunitoSansMedium.copyWith(
+                                    fontSize: 16,
+                                    color: AppColor.dark,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

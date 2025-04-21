@@ -14,8 +14,14 @@ class ProductController extends GetxController {
   ProductModel? product;
   bool isLoading = true;
   final ProductService productService = ProductService();
-  var categories = ['Beverage', 'Bread', 'Cake', 'Cookies'];
-  var selectedCategory = 'Cake';
+  var categories = ['Cake', 'Bread', 'Beverage', 'Cookies'];
+  Map<String, String> categoryMap = {
+    'Beverage': 'Beverage',
+    'Bread': 'Bread',
+    'Cake': 'Cake',
+    'Cookies': 'Cookies',
+  };
+  var selectedCategory = 'Beverage';
   Future<void> getProductsList() async {
     try {
       isLoading = true;
@@ -32,13 +38,16 @@ class ProductController extends GetxController {
   }
 
   void changeCategory(String category) {
-    selectedCategory = category;
+    // selectedCategory = category;
+    selectedCategory = categoryMap[category] ?? category;
     getProductByCategory();
+    update(); // WAJIB! Biar GetBuilder ngerender ulang
   }
 
   Future<void> getProductByCategory() async {
     try {
       isLoading = true;
+      products = [];
       update();
       products =
           await ProductService().getProductsByCategories(selectedCategory);

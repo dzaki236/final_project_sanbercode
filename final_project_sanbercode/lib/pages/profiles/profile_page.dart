@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthController authController = Get.find<AuthController>();
-    final user = authController.auth.currentUser;
+    // final user = authController.auth.currentUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -46,57 +46,68 @@ class ProfilePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                UserInfoAvatars(email: user?.email ?? 'tidak ada email'),
-                const SizedBox(
-                  height: 40,
-                ),
-                Center(
-                  child: Text(
-                    'About Me',
-                    style: AppFont.nunitoSansBold
-                        .copyWith(color: AppColor.dark, fontSize: 20),
-                  ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InfoDivider(
-                        title: 'Name',
-                        value: user?.displayName ?? 'tidak ada nama'),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    InfoDivider(
-                        title: 'Email',
-                        value: user?.email ?? 'tidak ada email'),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    InfoDivider(
-                        title: 'Preferenced Id',
-                        value: user?.uid ?? 'tidak ada UID'),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        authController.signOut(context);
-                      },
-                      child: const Icon(
-                        Icons.logout,
-                        color: AppColor.dark,
+            child: GetBuilder(
+                init: authController,
+                builder: (_) {
+                  final user = authController.authService.currentUser;
+                  if (user == null) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColor.primary,
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    );
+                  }
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      UserInfoAvatars(email: user.email ?? 'tidak ada email'),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Center(
+                        child: Text(
+                          'About Me',
+                          style: AppFont.nunitoSansBold
+                              .copyWith(color: AppColor.dark, fontSize: 20),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          InfoDivider(
+                              title: 'Name',
+                              value: user.displayName ??
+                                  'Nama tidak ada, harus login terlebih dahulu untuk menampilkan..'),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          InfoDivider(
+                              title: 'Email',
+                              value: user.email ?? 'Tidak ada email'),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          InfoDivider(title: 'Preferenced Id', value: user.uid),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              authController.signOut(context);
+                            },
+                            child: const Icon(
+                              Icons.logout,
+                              color: AppColor.dark,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                }),
           ),
         ),
       ),

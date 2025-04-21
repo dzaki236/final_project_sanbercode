@@ -3,6 +3,7 @@ import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
 import 'package:final_project_sanbercode/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -27,17 +28,18 @@ class AuthController extends GetxController {
     }
   }
 
+
   Future<void> signOut(context) async {
-    // Implement your sign-out logic here
+     // Implement your sign-out logic here
     try {
       // GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       // if (googleUser != null) {
       //   await GoogleSignIn().signOut();
       // }
       await authService.signOut();
-      await successToast(context,
-          text: 'Berhasil keluar, Silahkan tunggu beberapa saat');
-      Get.offAllNamed(AuthRoutes.login);
+      await successToast(context, text: 'Berhasil keluar');
+
+      SystemNavigator.pop();
     } on FirebaseAuthException catch (_) {
       await errorToast(context, text: 'Gagal keluar');
     }

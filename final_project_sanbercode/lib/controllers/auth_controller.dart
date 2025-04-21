@@ -1,4 +1,5 @@
 import 'package:final_project_sanbercode/components/custom_widgets/toast.dart';
+import 'package:final_project_sanbercode/routes/auth_routes.dart';
 // import 'package:final_project_sanbercode/routes/auth_routes.dart';
 import 'package:final_project_sanbercode/routes/dashboard_routes.dart';
 import 'package:final_project_sanbercode/services/auth_service.dart';
@@ -28,9 +29,8 @@ class AuthController extends GetxController {
     }
   }
 
-
   Future<void> signOut(context) async {
-     // Implement your sign-out logic here
+    // Implement your sign-out logic here
     try {
       // GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       // if (googleUser != null) {
@@ -38,7 +38,7 @@ class AuthController extends GetxController {
       // }
       await authService.signOut();
       await successToast(context, text: 'Berhasil keluar');
-      // SystemNavigator.pop();
+      Get.offAllNamed(AuthRoutes.getStarted);
     } on FirebaseAuthException catch (_) {
       await errorToast(context, text: 'Gagal keluar');
     }

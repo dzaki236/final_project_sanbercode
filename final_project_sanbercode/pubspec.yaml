@@ -104,8 +104,8 @@ flutter_native_splash:
   color: "#FFFFFF"
   image: assets/images/splash_logo.png
   image_dark: assets/images/splash_logo.png
-  branding_dark: assets/images/branding.png
-  branding: assets/images/branding.png
+  branding_dark: assets/icons/branding.png
+  branding: assets/icons/branding.png
 
   android: true
   ios: true
@@ -113,7 +113,7 @@ flutter_native_splash:
   android_12:
     color: "#FFFFFF"
     image: assets/images/splash_logo.png
-    branding: assets/images/branding.png
+    branding: assets/icons/branding.png
 flutter_icons:
   android: true
   ios: true

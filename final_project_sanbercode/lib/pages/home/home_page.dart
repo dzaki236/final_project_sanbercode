@@ -91,9 +91,6 @@ class HomePage extends StatelessWidget {
                   ),
 
                   /// EndAppBar
-                  const SizedBox(
-                    height: 16,
-                  ),
 
                   /// Banner
                   SizedBox(
@@ -101,13 +98,14 @@ class HomePage extends StatelessWidget {
                     width: double.infinity,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
+                      shrinkWrap: false,
                       physics: const AlwaysScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
+                        // final banner = index;
                         return Padding(
                           padding: EdgeInsets.only(
-                              left: index == 0 ? 32 : 0, right: 16, top: 16),
-                          child: const BannerImage('assets/images/banner.png'),
+                              left: index == 0 ? 32 : 0, right: 16, top: 5),
+                          child: BannerImage("assets/images/banner_${index+1}.png"),
                         );
                       },
                       itemCount: 3,
@@ -162,20 +160,20 @@ class HomePage extends StatelessWidget {
                                 shrinkWrap: true,
                                 physics: const AlwaysScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
+                                  final product =
+                                      productController.products[index];
                                   return Padding(
                                     padding: const EdgeInsets.only(
                                         right: 16, top: 16, bottom: 20),
                                     child: SingleChildScrollView(
                                       child: ProductCard(
-                                        url:
-                                            "${productController.products[index].productImage}",
+                                        url: "${product.productImage}",
                                         productName:
-                                            "${productController.products[index].productName}-${productController.products[index].id}",
-                                        productPrice: productController
-                                            .products[index].productPrice,
+                                            "${product.productName}-${product.id}",
+                                        productPrice: product.productPrice,
                                         onPressed: () {
                                           Get.toNamed(
-                                            "${ProductRoutes.products}/${productController.products[index].id}",
+                                            "${ProductRoutes.products}/${product.id}",
                                           );
                                         },
                                       ),

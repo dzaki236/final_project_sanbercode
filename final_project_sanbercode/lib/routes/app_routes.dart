@@ -46,7 +46,10 @@ class AppRoutes {
         OutletBinding(),
       ],
     ),
-    GetPage(name: ProductRoutes.products, page: () => ProductPage()),
+    GetPage(
+        name: ProductRoutes.products,
+        page: () => ProductPage(),
+        bindings: [ProductBinding()]),
     GetPage(
       name: ProductRoutes.detail,
       page: () => DetailProductPage(),

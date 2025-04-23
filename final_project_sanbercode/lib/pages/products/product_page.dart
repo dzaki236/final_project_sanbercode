@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 
 class ProductPage extends StatelessWidget {
   ProductPage({super.key});
-  final ProductController productController = Get.put(ProductController());
+  final ProductController productController = Get.find<ProductController>();
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductController>(
@@ -63,8 +63,7 @@ class ProductPage extends StatelessWidget {
                       indicatorPadding: EdgeInsets.zero,
                       labelPadding: const EdgeInsets.only(left: 25, right: 25),
                       onTap: (index) {
-                        controller.changeCategory(
-                            controller.categories[index]);
+                        controller.changeCategory(controller.categories[index]);
                       },
                       tabs: controller.categories
                           .map((cat) => Tab(text: cat))
@@ -83,8 +82,7 @@ class ProductPage extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.all(16),
-                        child: ProductTabView(
-                            products: controller.products),
+                        child: ProductTabView(products: controller.products),
                       ),
                     ),
                   ),

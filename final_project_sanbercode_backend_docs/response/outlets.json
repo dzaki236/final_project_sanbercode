@@ -1,0 +1,50 @@
+[
+    {
+        "address": "Jakarta",
+        "name": "outlet-jakarta",
+        "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/jakarta_dszwrz.jpg",
+        "outlet_sells": 11,
+        "created_at": "2025-04-17T20:13:22.503Z",
+        "id": "1"
+    },
+    {
+        "address": "Depok",
+        "name": "outlet-depok",
+        "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830955/depok_np97ey.jpg",
+        "outlet_sells": 7,
+        "created_at": "2025-04-18T12:45:48.036Z",
+        "id": "2"
+    },
+    {
+        "address": "Bogor",
+        "name": "outlet-bogor",
+        "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744831152/bogor_msrrst.png",
+        "outlet_sells": 40,
+        "created_at": "2025-04-18T13:04:20.889Z",
+        "id": "3"
+    },
+    {
+        "address": "Makasar",
+        "name": "outlet-makasar",
+        "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744831017/makasar_jdo1ay.png",
+        "outlet_sells": 21,
+        "created_at": "2025-04-17T19:26:43.744Z",
+        "id": "4"
+    },
+    {
+        "address": "Klaten (Yogyakarta)",
+        "name": "outlet-klaten",
+        "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/yogyakarta_nudwq7.jpg",
+        "outlet_sells": 39,
+        "created_at": "2025-04-18T13:13:50.769Z",
+        "id": "5"
+    },
+    {
+        "address": "Surabaya",
+        "name": "outlet-surabaya",
+        "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1745262517/surabaya_alu3ka.jpg",
+        "outlet_sells": 20,
+        "created_at": "2025-04-21T14:28:21.099Z",
+        "id": "6"
+    }
+]

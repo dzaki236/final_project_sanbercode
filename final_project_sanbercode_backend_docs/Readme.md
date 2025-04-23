@@ -3,38 +3,227 @@ Kami dari tim "threegonometries" yang beranggotakan
 - Dzaki Ahnaf Zulfikar
 - Gertrud Irish Jovincia
 - Ayrisa Trianida
+
 ## Use Cases
+ID : BakeNCake adalah sebuah aplikasi untuk mencari kue pilihan berdasarkan katalog tertentu.. tujuan aplikasi dibuat adalah ketika teman teman saudara atau keluarga ada pesta dalam waktu dekat, sehingga belum sempat datang ke toko, untuk itu kami dari Threegonometries membuat sebuah aplikasi agar yang memiliki fitur, Explore Shop untuk memperkenalkan berbagai toko kue lokal, sesuai dengan lokasi menjelajahi berbagai pilihan kue seperti chocolate cake, cheesecake, red velvet, hingga roti dan cookies lainnya. Saat salah satu produk dipilih, halaman detail menampilkan gambar yang menggoda, deskripsi produk, opsi ukuran, hingga perhitungan harga yang langsung otomatis. Aplikasi ini bukan sekadar tempat berbelanja, tapi juga sahabat terbaik untuk merayakan momen spesial atau sekadar memanjakan diri dengan sepotong kue lezat. Penggunaan sumber API : menggunakan APi dari mockAPI, yang menampilkan data products dan outlets.
 
-There are many reasons to use the Gophish API. The most common use case is to gather report information for a given campaign, so that you can build custom reports in software you're most familiar with, such as Excel or Numbers.
-
-However, automating the creation of campaigns and campaign attributes such as templates, landing pages, and more provides the ability to create a fully automated phishing simulation program. This would allow campaigns to be run throughout the year automatically. This also allows the Gophish administrator to be included in the campaigns, since they wouldn't know exactly which day it would start!
+EN : BakeNCake is an apps to find favorite cake, by catalog choosen, the reason this app born, it comes from events like friends birthday or family gathering in a close time, but don't have a time for visiting to the store, thats why we're from Threegonometries make some inovated apps with feature like, explore shop, for introducing like lokal cake outlet store, based from their place, and more delicious cake option, like chocolate cake, cheesecake, red velvet, bread, cokies, etc, if one of product is choosed or click, page detail show delicious cake image, product description, and cake size, until calculate price automaticly. This app doesn't only online shopping platform, but the best way for celebrating special moment, or like chilling yourself with a slice of cake. Usinig API Source : From MockAPi, Show products and outlet data.
 
 ## Authorization
+Using firebase auth, just sign in and sign up like usual, also you can auth using a google account
 
-All API requests require the use of a generated API key. You can find your API key, or generate a new one, by navigating to the /settings endpoint, or clicking the “Settings” sidebar item.
-
-To authenticate an API request, you should provide your API key in the `Authorization` header.
-
-Alternatively, you may append the `api_key=[API_KEY]` as a GET parameter to authorize yourself to the API. But note that this is likely to leave traces in things like your history, if accessing the API through a browser.
-
+# Api Spec
+## Products API
 ```http
-GET /api/campaigns/?api_key=12345678901234567890123456789012
+GET chocolate cake, cheesecake, red velvet, hingga roti dan cookies lainnya
 ```
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `api_key` | `string` | **Required**. Your Gophish API key |
+| `category` | `string` | **Optional**. Your Category can search and filter cake by category |
 
 ## Responses
 
 Many API endpoints return the JSON representation of the resources created or edited. However, if an invalid request is submitted, or some other error occurs, Gophish returns a JSON response in the following format:
 
 ```javascript
-{
-  "message" : string,
-  "success" : bool,
-  "data"    : string
-}
+[
+  {
+    "product_name": "Chocolate Fudge Cake",
+    "product_price": 75000,
+    "product_description": "Rich and moist chocolate cake layered with dark fudge and topped with ganache.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830219/cake-1_njrgpo.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cake",
+    "rating": "4.7",
+    "rating_totals": 66,
+    "created_at": "2025-04-18T14:19:28.479Z",
+    "id": "1"
+  },
+  {
+    "product_name": "Strawberry Slice",
+    "product_price": 68000,
+    "product_description": "Classic Strawberry cake with smooth cream cheese frosting and a hint of cocoa.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830219/cake-2_sqhc8z.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cake",
+    "rating": "4.5",
+    "rating_totals": 41,
+    "created_at": "2025-04-18T14:08:32.719Z",
+    "id": "2"
+  },
+  {
+    "product_name": "Coffe Desert Cake",
+    "product_price": 82000,
+    "product_description": "Creamy Classic Italian dessert with layers of coffee-soaked sponge and mascarpone cream crust.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830221/cake-3_rsviqh.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cake",
+    "rating": "4.6",
+    "rating_totals": 29,
+    "created_at": "2025-04-18T04:42:09.271Z",
+    "id": "3"
+  },
+  {
+    "product_name": "Star Cake",
+    "product_price": 90000,
+    "product_description": "-",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830226/cake-4_l3vfqw.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cake",
+    "rating": "4.8",
+    "rating_totals": 77,
+    "created_at": "2025-04-18T03:02:26.451Z",
+    "id": "4"
+  },
+  {
+    "product_name": "Matcha Cake",
+    "product_price": 72000,
+    "product_description": "Soft cake baked with lightly sweetened matcha cream.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830221/cake-5_uhd5w3.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cake",
+    "rating": "4.4",
+    "rating_totals": 33,
+    "created_at": "2025-04-18T07:23:47.952Z",
+    "id": "5"
+  },
+  {
+    "product_name": "Oreo Cookies",
+    "product_price": 30000,
+    "product_description": "Crispy on the outside and chewy inside, packed with dark chocolate chips.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830221/cookies-1_ydtwlt.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cookies",
+    "rating": "4.6",
+    "rating_totals": 8,
+    "created_at": "2025-04-18T15:53:00.428Z",
+    "id": "6"
+  },
+  {
+    "product_name": "Oatmeal Raisin Cookies",
+    "product_price": 28000,
+    "product_description": "Wholesome cookies made with rolled oats and juicy raisins.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830222/cookies-2_b2byvv.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cookies",
+    "rating": "4.2",
+    "rating_totals": 63,
+    "created_at": "2025-04-18T02:43:48.642Z",
+    "id": "7"
+  },
+  {
+    "product_name": "Chocolate Butter Cookies",
+    "product_price": 29000,
+    "product_description": "Soft and rich cookies with real chocolate butter and a pinch of sea salt.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830224/cookies-3_ikjbgz.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cookies",
+    "rating": "4.5",
+    "rating_totals": 87,
+    "created_at": "2025-04-18T08:22:16.855Z",
+    "id": "8"
+  },
+  {
+    "product_name": "Double Chocolate Cookies",
+    "product_price": 32000,
+    "product_description": "Decadent cookies loaded with cocoa and chunks of dark chocolate.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830226/cookies-4_n2xdet.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Cookies",
+    "rating": "4.7",
+    "rating_totals": 87,
+    "created_at": "2025-04-18T15:33:51.205Z",
+    "id": "9"
+  },
+  {
+    "product_name": "Egg Butter Bread",
+    "product_price": 25000,
+    "product_description": "Fluffy bread brushed with egg, savory butter and baked to golden perfection.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830211/bread-1_kmp9dz.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Bread",
+    "rating": "4.6",
+    "rating_totals": 79,
+    "created_at": "2025-04-18T03:33:19.171Z",
+    "id": "10"
+  },
+  {
+    "product_name": "Japanese Crisp Milk Bread",
+    "product_price": 27000,
+    "product_description": "Soft, slightly sweet milk bread with a delicate crumb and golden crust.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830210/bread-2_pgdmhz.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Bread",
+    "rating": "4.5",
+    "rating_totals": 95,
+    "created_at": "2025-04-18T17:01:14.200Z",
+    "id": "11"
+  },
+  {
+    "product_name": "Sundy Snack",
+    "product_price": 22000,
+    "product_description": "Snack bar with kickback.",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830219/bvrg-1_jsjfwy.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Beverage",
+    "rating": "4.3",
+    "rating_totals": 58,
+    "created_at": "2025-04-18T11:57:00.966Z",
+    "id": "12"
+  },
+  {
+    "product_name": "Onion Salad",
+    "product_price": 28000,
+    "product_description": "-",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830212/bvrg-2_byjzmb.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Beverage",
+    "rating": "4.6",
+    "rating_totals": 38,
+    "created_at": "2025-04-18T08:58:05.329Z",
+    "id": "13"
+  },
+  {
+    "product_name": "Fried French Fries",
+    "product_price": 26000,
+    "product_description": "-",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830222/bvrg-3_sntkmf.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Beverage",
+    "rating": "4.4",
+    "rating_totals": 10,
+    "created_at": "2025-04-18T00:33:55.048Z",
+    "id": "14"
+  },
+  {
+    "product_name": "Fried Nuggets",
+    "product_price": 22000,
+    "product_description": "-",
+    "is_favorite": false,
+    "product_image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744831777/bvrg-4_bkclou.jpg",
+    "outlet": "toko-jakarta",
+    "category": "Beverage",
+    "rating": "4.4",
+    "rating_totals": 9,
+    "created_at": "2025-04-18T06:25:22.105Z",
+    "id": "15"
+  }
+]
 ```
 
 The `message` attribute contains a message commonly used to indicate errors or, in the case of deleting a resource, success that the resource was properly deleted.

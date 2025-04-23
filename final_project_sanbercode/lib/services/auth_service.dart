@@ -8,5 +8,5 @@ class AuthService extends GetxService {
     return this;
   }
 
-  Stream<User?> get authInitialize => auth.userChanges();
+  static Stream<User?> authInitialize() => auth.userChanges();
 }

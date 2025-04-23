@@ -17,11 +17,6 @@ class AuthController extends GetxController {
   }
 
   final authService = AuthService.auth;
-  // Future<User>? getCurrentUser() async {
-  //   // Get the current user from Firebase Auth
-  //   User? user = authService.currentUser;
-  //   return user;
-  // }
   Future<void> signIn(context,
       {required String email, required String password}) async {
     try {
@@ -39,11 +34,10 @@ class AuthController extends GetxController {
   Future<void> signOut(context) async {
     // Implement your sign-out logic here
     try {
-      // GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      // if (googleUser != null) {
-      //   await GoogleSignIn().signOut();
-      // }
       await authService.signOut();
+      if (GoogleSignIn().currentUser != null) {
+        await GoogleSignIn().signOut();
+      }
       await successToast(context, text: 'Berhasil keluar');
       Get.offAllNamed(AuthRoutes.getStarted);
     } on FirebaseAuthException catch (_) {
@@ -53,8 +47,8 @@ class AuthController extends GetxController {
 
   Future<void> signUp(context,
       {required String email, required String password}) async {
-    // Implement your sign-up logic here
     try {
+      // Implement your sign-up logic here
       // login & register
       await authService.createUserWithEmailAndPassword(
         email: email,
@@ -73,13 +67,16 @@ class AuthController extends GetxController {
 
   Future<void> signInWithGoogle(context) async {
     try {
-      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       if (googleUser == null) {
-        // User canceled the sign-in
         return;
       }
-      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      OAuthCredential credential = GoogleAuthProvider.credential(
+      if (GoogleSignIn().currentUser != null) {
+        await GoogleSignIn().signOut();
+      }
+
+      GoogleSignInAuthentication? googleAuth = await googleUser.authentication;
+      OAuthCredential? credential = await GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );

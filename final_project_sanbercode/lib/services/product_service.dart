@@ -11,7 +11,8 @@ class ProductService extends GetxService {
   Future<List<ProductModel>> getProducts(int? limit) async {
     try {
       final response = await dio.get(ApiUrl.productUrl);
-if(response.statusCode == 200 || response.statusCode == 201) {        List<ProductModel> products = List.from(
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        List<ProductModel> products = List.from(
           response.data.map((item) => ProductModel.fromJson(item)),
         );
         // Filter products based on the limit
@@ -29,8 +30,8 @@ if(response.statusCode == 200 || response.statusCode == 201) {        List<Produ
     try {
       final response =
           await dio.get("${ApiUrl.productUrl}/?category=$category");
-if(response.statusCode == 200 || response.statusCode == 201) {
-          List<ProductModel> products = List.from(
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        List<ProductModel> products = List.from(
           response.data.map((item) => ProductModel.fromJson(item)),
         );
         return products;

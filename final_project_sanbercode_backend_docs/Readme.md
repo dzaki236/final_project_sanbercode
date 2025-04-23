@@ -10,21 +10,21 @@ ID : BakeNCake adalah sebuah aplikasi untuk mencari kue pilihan berdasarkan kata
 EN : BakeNCake is an apps to find favorite cake, by catalog choosen, the reason this app born, it comes from events like friends birthday or family gathering in a close time, but don't have a time for visiting to the store, thats why we're from Threegonometries make some inovated apps with feature like, explore shop, for introducing like lokal cake outlet store, based from their place, and more delicious cake option, like chocolate cake, cheesecake, red velvet, bread, cokies, etc, if one of product is choosed or click, page detail show delicious cake image, product description, and cake size, until calculate price automaticly. This app doesn't only online shopping platform, but the best way for celebrating special moment, or like chilling yourself with a slice of cake. Usinig API Source : From MockAPi, Show products and outlet data.
 
 ## Authorization
-Using firebase auth, just sign in and sign up like usual, also you can auth using a google account
+Using firebase auth, just sign in and sign up like usual, also you can auth using a google account.
 
 # Api Spec
 ## Products API
+### Request
 ```http
-GET chocolate cake, cheesecake, red velvet, hingga roti dan cookies lainnya
+GET https://67fa2a35094de2fe6ea3553e.mockapi.io/api/v1/products
 ```
+get data of chocolate cake, cheesecake, red velvet, hingga roti dan cookies lainnya
 
-| Parameter | Type | Description |
+| Query | Type | Description |
 | :--- | :--- | :--- |
 | `category` | `string` | **Optional**. Your Category can search and filter cake by category |
 
-## Responses
-
-Many API endpoints return the JSON representation of the resources created or edited. However, if an invalid request is submitted, or some other error occurs, Gophish returns a JSON response in the following format:
+### Responses
 
 ```javascript
 [
@@ -225,16 +225,81 @@ Many API endpoints return the JSON representation of the resources created or ed
   }
 ]
 ```
+### Status Codes
 
-The `message` attribute contains a message commonly used to indicate errors or, in the case of deleting a resource, success that the resource was properly deleted.
+Returns the following status codes in its API:
 
-The `success` attribute describes if the transaction was successful or not.
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+| 201 | `CREATED` |
+| 400 | `BAD REQUEST` |
+| 404 | `NOT FOUND` |
+| 500 | `INTERNAL SERVER ERROR` |
 
-The `data` attribute contains any other metadata associated with the response. This will be an escaped string containing JSON data.
+## Outlets API
+### Request
+```http
+GET https://67fa2a35094de2fe6ea3553e.mockapi.io/api/v1/outlets
+```
 
-## Status Codes
+### Responses
 
-Gophish returns the following status codes in its API:
+```javascript
+[
+  {
+    "address": "Jakarta",
+    "name": "outlet-jakarta",
+    "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/jakarta_dszwrz.jpg",
+    "outlet_sells": 11,
+    "created_at": "2025-04-17T20:13:22.503Z",
+    "id": "1"
+  },
+  {
+    "address": "Depok",
+    "name": "outlet-depok",
+    "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830955/depok_np97ey.jpg",
+    "outlet_sells": 7,
+    "created_at": "2025-04-18T12:45:48.036Z",
+    "id": "2"
+  },
+  {
+    "address": "Bogor",
+    "name": "outlet-bogor",
+    "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744831152/bogor_msrrst.png",
+    "outlet_sells": 40,
+    "created_at": "2025-04-18T13:04:20.889Z",
+    "id": "3"
+  },
+  {
+    "address": "Makasar",
+    "name": "outlet-makasar",
+    "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744831017/makasar_jdo1ay.png",
+    "outlet_sells": 21,
+    "created_at": "2025-04-17T19:26:43.744Z",
+    "id": "4"
+  },
+  {
+    "address": "Klaten (Yogyakarta)",
+    "name": "outlet-klaten",
+    "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1744830956/yogyakarta_nudwq7.jpg",
+    "outlet_sells": 39,
+    "created_at": "2025-04-18T13:13:50.769Z",
+    "id": "5"
+  },
+  {
+    "address": "Surabaya",
+    "name": "outlet-surabaya",
+    "image": "https://res.cloudinary.com/dgkvma38q/image/upload/v1745262517/surabaya_alu3ka.jpg",
+    "outlet_sells": 20,
+    "created_at": "2025-04-21T14:28:21.099Z",
+    "id": "6"
+  }
+]
+```
+### Status Codes
+
+Returns the following status codes in its API:
 
 | Status Code | Description |
 | :--- | :--- |

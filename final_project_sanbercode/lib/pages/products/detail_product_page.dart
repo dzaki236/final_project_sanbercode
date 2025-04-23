@@ -164,8 +164,7 @@ class DetailProductPage extends StatelessWidget {
                 onPressed: () {
                   errorToast(
                     context,
-                    text:
-                        'Maaf, fitur belum tersedia!\nkarena ini masih tahap prototype, fitur ini belum tersedia sepenuhnya!',
+                    text: 'Maaf, fitur belum tersedia sepenuhnya!',
                   );
                 },
                 fullWidthButton: false,

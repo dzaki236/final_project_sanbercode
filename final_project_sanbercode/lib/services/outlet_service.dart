@@ -12,7 +12,7 @@ class OutletService extends GetxService {
   Future<List<OutletModel>> getOutlets() async {
     try {
       final response = await dio.get(ApiUrl.outletUrl);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         List<OutletModel> outlet = List.from(
           response.data.map((item) => OutletModel.fromJson(item)),
         );

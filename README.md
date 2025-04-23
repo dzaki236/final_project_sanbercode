@@ -1,12 +1,18 @@
 # Cake & Bake Apps
-- Build With flutter, state by : getX statemanagement and firebase for auth
-- With API from mockapi backend (https://mockapi.io/)
+- Build With (you can see at pubspec.yaml file project):
+1. GetWidget UI Kit
+2. State management getX
+3. Firebase
+4. Icon_apps
+5. Native_splash
+- And API from mockapi backend (https://mockapi.io/)
 
 # Introduction
 Kami dari tim "Threegonometries" yang beranggotakan
-- Dzaki Ahnaf Zulfikar
-- Gertrud Irish Jovincia
-- Ayrisa Trianida
+- Dzaki Ahnaf Zulfikar (Depok, jawa Barat)
+- Gertrud Irish Jovincia (Yogyakarta, Jawa Tengah)
+- Ayrisa Trianida (Yogyakarta, Jawa Tengah)
+
 
 ## Use Cases
 ID : BakeNCake adalah sebuah aplikasi untuk mencari kue pilihan berdasarkan katalog tertentu.. tujuan aplikasi dibuat adalah ketika teman teman saudara atau keluarga ada pesta dalam waktu dekat, sehingga belum sempat datang ke toko, untuk itu kami dari Threegonometries membuat sebuah aplikasi agar yang memiliki fitur, Explore Shop untuk memperkenalkan berbagai toko kue lokal, sesuai dengan lokasi menjelajahi berbagai pilihan kue seperti chocolate cake, cheesecake, red velvet, hingga roti dan cookies lainnya. Saat salah satu produk dipilih, halaman detail menampilkan gambar yang menggoda, deskripsi produk, opsi ukuran, hingga perhitungan harga yang langsung otomatis. Aplikasi ini bukan sekadar tempat berbelanja, tapi juga sahabat terbaik untuk merayakan momen spesial atau sekadar memanjakan diri dengan sepotong kue lezat. Penggunaan sumber API : menggunakan APi dari mockAPI, yang menampilkan data products dan outlets.

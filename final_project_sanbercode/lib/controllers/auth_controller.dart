@@ -37,6 +37,7 @@ class AuthController extends GetxController {
       await authService.signOut();
       if (GoogleSignIn().currentUser != null) {
         await GoogleSignIn().signOut();
+        await GoogleSignIn().disconnect();
       }
       await successToast(context, text: 'Berhasil keluar');
       Get.offAllNamed(AuthRoutes.getStarted);

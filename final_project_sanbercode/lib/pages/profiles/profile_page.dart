@@ -80,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                           InfoDivider(
                               title: 'Name',
                               value: user.displayName ??
-                                  'Nama tidak ada, harus login terlebih dahulu untuk menampilkan..'),
+                                  'Nama tidak ada, harus login menggunakan email google terlebih dahulu untuk menampilkan..'),
                           const SizedBox(
                             height: 24,
                           ),

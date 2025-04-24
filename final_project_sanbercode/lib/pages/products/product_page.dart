@@ -11,10 +11,14 @@ import 'package:get/get.dart';
 
 class ProductPage extends StatelessWidget {
   ProductPage({super.key});
-  final ProductController productController = Get.find<ProductController>();
+  // final ProductController productController =
+  //     Get.find<ProductController>(tag: 'product');
+  final void productController =
+      Get.lazyPut(() => ProductController(), tag: 'product');
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductController>(
+      tag: 'product',
       builder: (controller) {
         if (controller.categories.isEmpty) {
           return Scaffold(

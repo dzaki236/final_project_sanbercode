@@ -7,6 +7,7 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     getProductsList();
+    getProductByCategory();
     super.onInit();
   }
 
@@ -26,6 +27,8 @@ class ProductController extends GetxController {
     try {
       isLoading = true;
       update();
+      products = [];
+      update();
       products = await ProductService().getProducts(5);
       update();
     } catch (e) {
@@ -38,7 +41,6 @@ class ProductController extends GetxController {
   }
 
   void changeCategory(String category) {
-    // selectedCategory = category;
     selectedCategory = categoryMap[category] ?? category;
     getProductByCategory();
     update(); // WAJIB! Biar GetBuilder ngerender ulang
@@ -51,6 +53,7 @@ class ProductController extends GetxController {
       update();
       products =
           await ProductService().getProductsByCategories(selectedCategory);
+      update();
       isLoading = false;
       update();
     } catch (e) {

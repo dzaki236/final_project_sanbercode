@@ -35,10 +35,8 @@ class AuthController extends GetxController {
     // Implement your sign-out logic here
     try {
       await authService.signOut();
-      if (GoogleSignIn().currentUser != null) {
-        await GoogleSignIn().signOut();
-        await GoogleSignIn().disconnect();
-      }
+      await GoogleSignIn().disconnect();
+      await GoogleSignIn().signOut();
       await successToast(context, text: 'Berhasil keluar');
       Get.offAllNamed(AuthRoutes.getStarted);
     } on FirebaseAuthException catch (_) {

@@ -26,6 +26,13 @@ class Input extends StatefulWidget {
 
 class _InputState extends State<Input> {
   bool _obscureText = true;
+
+  @override
+  void dispose() {
+    widget.controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
